@@ -22,7 +22,7 @@ namespace Micros_Toolbox
         {
             InitializeComponent();
             Logger.LogRTB = LogRTB;
-           // ActionsAllowed(false);
+            ActionsAllowed(false);
         }
 
         public static bool PingCheck(string hostname)
@@ -82,6 +82,7 @@ namespace Micros_Toolbox
 
         public void ActionsAllowed(Boolean enableDisable)
         {
+            getServicesBtn.Enabled = enableDisable;
             killCalBtn.Enabled = enableDisable;
             killSarOpsBtn.Enabled = enableDisable;
             rebootBtn.Enabled = enableDisable;
@@ -106,7 +107,7 @@ namespace Micros_Toolbox
 
         private void hostnameInput_TextChanged(object sender, EventArgs e)
         {
-            //ActionsAllowed(false);
+            ActionsAllowed(false);
             status.BackColor = Color.Yellow;
             status.Text = "Waiting...";
         }
