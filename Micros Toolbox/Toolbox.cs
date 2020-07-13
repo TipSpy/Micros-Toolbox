@@ -120,25 +120,25 @@ namespace Micros_Toolbox
 
         private void killSarOpsBtn_Click(object sender, EventArgs e)
         {
-            Commands.RunPowershell("(Get-WmiObject Win32_Process -ComputerName " + hostnameInput.Text + " | ?{ $_.ProcessName -match 'SarOps' }).Terminate()");
+            Commands.RunPowershell("(Get-WmiObject Win32_Process -ComputerName " + hostnameInput.Text + " | ?{ $_.ProcessName -match 'SarOpsWin32' }).Terminate()");
             Logger.Good("\"Kill SarOps\" Command sent!");
         }
 
         private void killCalBtn_Click(object sender, EventArgs e)
         {
-            Commands.RunPowershell("(Get-WmiObject Win32_Process -ComputerName " + hostnameInput.Text + " | ?{ $_.ProcessName -match 'McrsCal' }).Terminate()");
+            Commands.RunPowershell("(Get-WmiObject Win32_Process -ComputerName " + hostnameInput.Text + " | ?{ $_.ProcessName -match 'MICROS CAL Client' }).Terminate()");
             Logger.Good("\"Kill McrsCal\" Command sent!");
         }
 
         private void getServicesBtn_Click(object sender, EventArgs e)
         {
-
+            Logger.Warning("This feature is not yet implemented!");
 
             //SEE DYLANS TEXT MESSAGE ABOUT SERVICECONTROLLER!
 
 
             var test = "Get-Service -ComputerName " + hostnameInput.Text;
-            Logger.Log("Getting Services List from '" + hostnameInput.Text + "'");
+            //Logger.Log("Getting Services List from '" + hostnameInput.Text + "'");
             using (PowerShell ps = PowerShell.Create())
             {
                 //ps.AddScript("Get-Service -ComputerName " + hostnameInput.Text);
@@ -158,6 +158,12 @@ namespace Micros_Toolbox
                     }
                 }
             }
+        }
+
+        private void startSarOpsBtn_Click(object sender, EventArgs e)
+        {
+            Commands.RunPowershell("(Get-WmiObject Win32_Process -ComputerName " + hostnameInput.Text + " | ?{ $_.ProcessName -match 'SarOpsWin32' }).Start(); pause");
+            Logger.Good("\"Start SarOps\" Command sent!");
         }
     }
 }

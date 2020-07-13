@@ -139,6 +139,7 @@
             this.startSarOpsBtn.TabIndex = 9;
             this.startSarOpsBtn.Text = "Start SarOps";
             this.startSarOpsBtn.UseVisualStyleBackColor = true;
+            this.startSarOpsBtn.Click += new System.EventHandler(this.startSarOpsBtn_Click);
             // 
             // getServicesBtn
             // 

@@ -12,6 +12,9 @@ namespace Micros_Toolbox.Classes
         {
             return Task.Run(() => {
                 Process ps = new Process();
+
+                // NOT WORKING BECAUSE FILE DOESN'T EXIST
+
                 ps.StartInfo.FileName = System32Path() + @"WindowsPowerShell\v1.0\powershell.exe";
                 //ps.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 ps.StartInfo.Arguments = "-Command " + Command;
@@ -24,7 +27,8 @@ namespace Micros_Toolbox.Classes
         {
             if (Environment.Is64BitOperatingSystem)
             {
-                return @"C:\Windows\Sysnative\";
+                return @"C:\Windows\System32\";
+                //return @"C:\Windows\Sysnative\";
             }
             else
             {
